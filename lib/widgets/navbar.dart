@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/cart.dart';
-import 'package:food_delivery/chat.dart';
+import 'package:food_delivery/chats_list.dart';
 import 'package:food_delivery/home.dart';
 import 'package:food_delivery/person.dart';
 import 'package:food_delivery/popular_resturant.dart';
