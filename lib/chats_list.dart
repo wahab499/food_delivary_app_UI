@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/chat_screen.dart';
+import 'package:food_delivery/chatdp.dart';
 import 'package:food_delivery/models/chatsdata_model.dart';
 import 'package:food_delivery/widgets/backbtn.dart';
 import 'package:food_delivery/widgets/navbar.dart';
@@ -29,81 +30,102 @@ class Chat extends StatelessWidget {
             Expanded(
               child: ListView.separated(
                 itemCount: chatuserdata.length,
+
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ChatScreen()),
+                        MaterialPageRoute(
+                          builder:
+                              (context) => ChatScreen(
+                                chatDataModel: chatuserdata[index],
+                              ),
+                        ),
                       );
                     },
-                    child: Container(
-                      width: 380,
-                      height: 120,
-
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.grey.shade200,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(13.0),
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              height: 90,
-                              width: 90,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: Image.asset(
-                                  chatuserdata[index].imageUrl,
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 30),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-
-                              children: [
-                                SizedBox(
-                                  width: 220,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-
-                                    children: [
-                                      Text(
-                                        chatuserdata[index].username,
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-
-                                      Text(
-                                        chatuserdata[index].time,
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Text(
-                                  chatuserdata[index].message,
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    child: Chatdp(chatDataModel: chatuserdata[index]),
                   );
+
+                  // GestureDetector(
+                  //   onTap: () {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //         builder:
+                  //             (context) => ChatScreen(
+                  //               name: chatuserdata[index].username,
+                  //             ),
+                  //       ),
+                  //     );
+                  //   },
+                  //   child: Container(
+                  //     width: 380,
+                  //     height: 120,
+
+                  //     decoration: BoxDecoration(
+                  //       borderRadius: BorderRadius.circular(15),
+                  //       color: Colors.grey.shade200,
+                  //     ),
+                  //     child: Padding(
+                  //       padding: const EdgeInsets.all(13.0),
+                  //       child: Row(
+                  //         children: [
+                  //           SizedBox(
+                  //             height: 90,
+                  //             width: 90,
+                  //             child: ClipRRect(
+                  //               borderRadius: BorderRadius.circular(20),
+                  //               child: Image.asset(
+                  //                 chatuserdata[index].imageUrl,
+                  //               ),
+                  //             ),
+                  //           ),
+                  //           SizedBox(width: 30),
+                  //           Column(
+                  //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //             crossAxisAlignment: CrossAxisAlignment.start,
+
+                  //             children: [
+                  //               SizedBox(
+                  //                 width: 220,
+                  //                 child: Row(
+                  //                   mainAxisAlignment:
+                  //                       MainAxisAlignment.spaceBetween,
+
+                  //                   children: [
+                  //                     Text(
+                  //                       chatuserdata[index].username,
+                  //                       style: TextStyle(
+                  //                         fontSize: 20,
+                  //                         fontWeight: FontWeight.bold,
+                  //                       ),
+                  //                     ),
+
+                  //                     Text(
+                  //                       chatuserdata[index].time,
+                  //                       style: TextStyle(
+                  //                         fontSize: 18,
+                  //                         color: Colors.grey,
+                  //                       ),
+                  //                     ),
+                  //                   ],
+                  //                 ),
+                  //               ),
+                  //               Text(
+                  //                 chatuserdata[index].message,
+                  //                 style: TextStyle(
+                  //                   fontSize: 18,
+                  //                   color: Colors.grey,
+                  //                 ),
+                  //               ),
+                  //             ],
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // );
                 },
                 separatorBuilder: (context, index) {
                   return Divider(height: 7);

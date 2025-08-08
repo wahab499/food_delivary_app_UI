@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/callscreen.dart';
+import 'package:food_delivery/chatdp.dart';
+import 'package:food_delivery/chats_list.dart';
+import 'package:food_delivery/models/chatsdata_model.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key});
+  const ChatScreen({super.key, required this.chatDataModel});
+  //final String name;
+  final ChatDataModel chatDataModel;
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
@@ -68,9 +74,27 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Custom Chat'), backgroundColor: Colors.blue),
+      appBar: AppBar(
+        title: Text('Custom Chat'),
+        backgroundColor: Colors.white60,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: IconButton(
+              icon: Icon(Icons.call),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Callscreen()),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
       body: Column(
         children: [
+          Chatdp(chatDataModel: widget.chatDataModel),
           Expanded(
             child: ListView.builder(
               controller: _scrollController,
