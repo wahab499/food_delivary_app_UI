@@ -31,7 +31,7 @@ class _OnBordingOneState extends State<OnBordingOne> {
         children: [
           PageView.builder(
             controller: _pageController,
-            // itemCount: _pages.length,
+            itemCount: _pages.length,
             onPageChanged: (index) {
               setState(() {
                 _currentindex = (index);

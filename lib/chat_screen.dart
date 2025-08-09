@@ -95,14 +95,13 @@ class _ChatScreenState extends State<ChatScreen> {
       body: Column(
         children: [
           Chatdp(chatDataModel: widget.chatDataModel),
-          Expanded(
-            child: ListView.builder(
-              controller: _scrollController,
-              itemCount: messages.length,
-              itemBuilder: (context, index) {
-                return _buildMessage(messages[index]);
-              },
-            ),
+          ListView.builder(
+            shrinkWrap: true,
+            controller: _scrollController,
+            itemCount: messages.length,
+            itemBuilder: (context, index) {
+              return _buildMessage(messages[index]);
+            },
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),

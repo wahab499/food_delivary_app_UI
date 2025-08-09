@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/callreview.dart';
 
-class Callscreen extends StatelessWidget {
+class Callscreen extends StatefulWidget {
   const Callscreen({super.key});
 
+  @override
+  State<Callscreen> createState() => _CallscreenState();
+}
+
+class _CallscreenState extends State<Callscreen> {
+  bool currenticon = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,9 +41,19 @@ class Callscreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(40),
                   color: Colors.green.shade50,
                 ),
-                child: IconButton(
-                  onPressed: () {},
-                  icon: (Icon(Icons.volume_up, color: Colors.green)),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      currenticon = !currenticon;
+                      // print("Before tap: $currenticon");
+                    });
+                    // print("Before tap: $currenticon");
+                  },
+
+                  child: (Icon(
+                    currenticon ? Icons.volume_mute : Icons.volume_up,
+                    color: Colors.green,
+                  )),
                 ),
               ),
               SizedBox(width: 20),
@@ -48,7 +65,12 @@ class Callscreen extends StatelessWidget {
                   color: Colors.red,
                 ),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Callreview()),
+                    );
+                  },
                   icon: (Icon(Icons.call_end, color: Colors.white)),
                 ),
               ),
