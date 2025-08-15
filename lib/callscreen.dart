@@ -9,7 +9,8 @@ class Callscreen extends StatefulWidget {
 }
 
 class _CallscreenState extends State<Callscreen> {
-  bool currenticon = true;
+  //bool currenticon = true;
+  IconData _currenticon = Icons.volume_up;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,16 +45,13 @@ class _CallscreenState extends State<Callscreen> {
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
-                      currenticon = !currenticon;
-                      // print("Before tap: $currenticon");
+                      _currenticon =
+                          _currenticon == Icons.volume_up
+                              ? Icons.volume_mute
+                              : Icons.volume_up;
                     });
-                    // print("Before tap: $currenticon");
                   },
-
-                  child: (Icon(
-                    currenticon ? Icons.volume_mute : Icons.volume_up,
-                    color: Colors.green,
-                  )),
+                  child: Icon(_currenticon, color: Colors.green),
                 ),
               ),
               SizedBox(width: 20),
