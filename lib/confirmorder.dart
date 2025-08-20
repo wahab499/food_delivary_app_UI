@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/Orderpage.dart';
 import 'package:food_delivery/Paymentedit.dart';
 import 'package:food_delivery/addressedit.dart';
+import 'package:food_delivery/tocheckout.dart';
 import 'package:food_delivery/widgets/Billcontainer.dart';
 import 'package:food_delivery/widgets/backbtn.dart';
 
@@ -134,7 +135,7 @@ class OrderConfirm extends StatelessWidget {
               ],
             ),
             Spacer(),
-            BillContainer(),
+            BillContainer(direction: Findfavoritefood()),
           ],
         ),
       ),

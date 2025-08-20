@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/confirmorder.dart';
+import 'package:food_delivery/notification.dart';
 import 'package:food_delivery/widgets/Billcontainer.dart';
 import 'package:food_delivery/widgets/backbtn.dart';
 
@@ -17,7 +19,7 @@ class _CartState extends State<Orderpage> {
         padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 8),
         child: Column(
           children: [
-            Backbtn(direction: Orderpage()),
+            Backbtn(direction: Notificationscreen()),
             SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -47,7 +49,7 @@ class _CartState extends State<Orderpage> {
               notificationimage: 'assets/images/chatprofilephoto.png',
             ),
             Spacer(),
-            BillContainer(),
+            BillContainer(direction: OrderConfirm()),
           ],
         ),
       ),

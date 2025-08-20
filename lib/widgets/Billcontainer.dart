@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/confirmorder.dart';
 
 class BillContainer extends StatelessWidget {
-  const BillContainer({super.key});
+  final Widget direction;
+  const BillContainer({super.key, required this.direction});
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +110,7 @@ class BillContainer extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => OrderConfirm()),
+                  MaterialPageRoute(builder: (context) => direction),
                 );
               },
               child: Text('Place My Order'),
